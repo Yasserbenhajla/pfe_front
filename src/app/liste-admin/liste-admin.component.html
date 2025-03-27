@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:30 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <title>Admiro - Premium Admin Template</title>
+    <!-- Favicon icon-->
+
+  </head>
+  <body>
+    <!-- tap on top starts-->
+    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
+    <!-- tap on tap ends-->
+    <!-- loader-->
+    <div class="loader-wrapper">
+      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+     <app-header></app-header>
+      <div class="page-body-wrapper">
+        <!-- Page sidebar start-->
+        <app-menu></app-menu>
+        <!-- Page sidebar end-->
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-sm-6 col-12">
+                  <h2>Advance Init</h2>
+                </div>
+                <div class="col-sm-6 col-12">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
+                    <li class="breadcrumb-item">Data Tables</li>
+                    <li class="breadcrumb-item active">Advance Init </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts                   -->
+          <div class="container-fluid">
+            <div class="row">
+              <!-- Stock result -->
+
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header pb-0 card-no-border">
+
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive theme-scrollbar">
+                      <table class="display" id="row_create" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let admin of listAdmin">
+                            <td>{{admin.id}}	</td>
+                            <td>{{admin.nom}}	</td>
+                            <td>{{admin.prenom}} </td>
+                            <td>{{admin.email}}	</td>
+                            <td>{{admin.role}}</td>
+                            <td><a href="/modifierAdmin/{{admin.id}}" type="submit" class="btn btn-success">Modfier</a>
+                              <button  (click)="DeleteAdmin(admin)" type="submit" class="btn btn-danger">Supprimer</button></td>
+                          </tr>
+                         </tbody>
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends                                     -->
+        </div>
+       <app-footer></app-footer>
+      </div>
+    </div>
+    <!-- jquery-->
+
+  </body>
+
+<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:31 GMT -->
+</html>
