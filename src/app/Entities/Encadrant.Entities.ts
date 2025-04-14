@@ -7,6 +7,7 @@ export class Encadrant {
     public password ?:string ,
     public qualite ?:string ,
     public tel ?:string ,
+    public etat ?:boolean,
   ){
 
   }

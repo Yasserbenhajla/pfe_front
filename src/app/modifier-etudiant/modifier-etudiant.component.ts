@@ -70,7 +70,7 @@ export class ModifierEtudiantComponent {
     console.log(data);
     this.services.updateEtudiant(this.id, etudiant).subscribe((res) => {
       console.log(res);
-      this.router.navigate(['/listeEtudiants']).then(() => window.location.reload());
+      this.router.navigate(['/listeEtudiant']).then(() => window.location.reload());
     });
   }
 }

@@ -18,6 +18,7 @@ import { ListeEncadrantComponent } from './liste-encadrant/liste-encadrant.compo
 import { ModifierAdminComponent } from './modifier-admin/modifier-admin.component';
 import { ModifierEtudiantComponent } from './modifier-etudiant/modifier-etudiant.component';
 import { ModifierEncadrantComponent } from './modifier-encadrant/modifier-encadrant.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ModifierEncadrantComponent } from './modifier-encadrant/modifier-encadr
     ListeEncadrantComponent,
     ModifierAdminComponent,
     ModifierEtudiantComponent,
-    ModifierEncadrantComponent
+    ModifierEncadrantComponent,
+    HomeComponent
   ], // ICI il manquait la fermeture du tableau
 
   imports: [ // Ce bloc était mal placé

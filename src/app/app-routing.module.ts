@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AjouterAdminComponent } from './ajouter-admin/ajouter-admin.component';
@@ -14,14 +15,15 @@ import { ModifierEncadrantComponent } from './modifier-encadrant/modifier-encadr
 const routes: Routes = [
   {path:'ajouteretudiant',component:AjouterAdminComponent},
   {path:'listeAdmin',component:ListeAdminComponent},
-  {path:'login',component:LoginComponent},
-  {path:'',component:AjouterEtudiantComponent},
+  {path:'',component:LoginComponent},
+  {path:'ajouterEtudiant',component:AjouterEtudiantComponent},
   {path:'listeEtudiant',component:ListeetudiantComponent},
   {path:'ajouterencadrant',component:AjouterEncadrantComponent},
   {path:'listeEncadrant',component:ListeEncadrantComponent},
   {path:'modifierAdmin/:id',component:ModifierAdminComponent},
   {path:'modifierEtudiant/:id',component:ModifierEtudiantComponent},
-  {path:'modifierEncadrant/:id',component:ModifierEncadrantComponent}
+  {path:'modifierEncadrant/:id',component:ModifierEncadrantComponent},
+  {path:'home',component:HomeComponent}
 
 ];
 

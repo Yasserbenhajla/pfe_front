@@ -62,7 +62,7 @@ export class LoginComponent {
       </div>`
             let token = res.token;
             localStorage.setItem("myToken",token);
-            this.router.navigate(['/']).then(()=>{window.location.reload()});
+            this.router.navigate(['/home']).then(()=>{window.location.reload()});
           },
           err=>{
             console.log(err);
