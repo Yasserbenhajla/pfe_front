@@ -1,0 +1,135 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<!-- Mirrored from admin.pixelstrap.net/admiro/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 08:59:53 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities."/>
+    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app"/>
+    <meta name="author" content="pixelstrap"/>
+    <title>Admiro - Premium Admin Template</title>
+    <!-- Favicon icon-->
+
+  </head>
+  <body>
+    <!-- page-wrapper Start-->
+    <!-- tap on top starts-->
+    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
+    <!-- tap on tap ends-->
+    <!-- loader-->
+    <div class="loader-wrapper">
+      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <app-header></app-header>
+      <!-- Page Body Start-->
+      <div class="page-body-wrapper">
+        <!-- Page sidebar start-->
+      <app-menu></app-menu>
+        <!-- Page sidebar end-->
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-sm-6 col-12">
+
+                  <p class="mb-0 text-title-gray">Welcome back! Let’s start from where you left.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid default-dashboard">
+            <div class="row">
+
+
+              <div class="col-xxl-12 col-xl-12 proorder-xxl-12 col-lg-12 box-col-12">
+                <div class="card job-card">
+                  <div class="card-header pb-0 card-no-border">
+                    <div class="header-top">
+                      <h3>Job Today</h3>
+                      <div>
+                        <p>Wednesday 6, <span>Dec 2022</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body pt-2">
+                    <ul class="d-flex align-center justify-content-center gap-3">
+                      <li>
+                        <div class="d-flex gap-2">
+                          <div class="flex-shrink-0 bg-light-primary">
+                            <svg class="stroke-icon">
+                              <use href="https://admin.pixelstrap.net/admiro/assets/svg/icon-sprite.svg#job-bag"></use>
+                            </svg>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h3>{{totalAdmin}}</h3>
+                            <p>Total Administrateur </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="d-flex gap-2">
+                          <div class="flex-shrink-0 bg-light-secondary">
+                            <svg class="stroke-icon">
+                              <use href="https://admin.pixelstrap.net/admiro/assets/svg/icon-sprite.svg#employees"></use>
+                            </svg>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h3>{{totalEtudiant}}</h3>
+                            <p>Total Etudiant</p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="d-flex gap-2">
+                          <div class="flex-shrink-0 bg-light-warning">
+                            <svg class="stroke-icon">
+                              <use href="https://admin.pixelstrap.net/admiro/assets/svg/icon-sprite.svg#hours-work"></use>
+                            </svg>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h3>{{totalEncadrant}}</h3>
+                            <p>Total Encadrant</p>
+                          </div>
+                        </div>
+
+                      </li>
+                    </ul>
+                    <div class="row">
+
+
+                      <div class="col-lg-6">
+                          <div class="charts-wrapper">
+                              <div class="chart-container">
+                                <canvas id="canvas" width="350" height="350"></canvas>
+                              </div>
+
+                            </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="chart-container">
+                              <canvas id="percentageCanvas" width="350" height="350"></canvas>
+                          </div>
+                       </div>
+
+                   </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <app-footer></app-footer>
+      </div>
+    </div>
+
+  </body>
+
+<!-- Mirrored from admin.pixelstrap.net/admiro/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:07:05 GMT -->
+</html>

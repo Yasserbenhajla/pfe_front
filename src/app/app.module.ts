@@ -19,6 +19,24 @@ import { ModifierAdminComponent } from './modifier-admin/modifier-admin.componen
 import { ModifierEtudiantComponent } from './modifier-etudiant/modifier-etudiant.component';
 import { ModifierEncadrantComponent } from './modifier-encadrant/modifier-encadrant.component';
 import { HomeComponent } from './home/home.component';
+import { AjouterSpecialiteComponent } from './ajouter-specialite/ajouter-specialite.component';
+import { ListSpecialiteComponent } from './list-specialite/list-specialite.component';
+import { AjouterQualiteComponent } from './ajouter-qualite/ajouter-qualite.component';
+import { ListeQualiteComponent } from './liste-qualite/liste-qualite.component';
+import { AjouterAffectationEncadrantComponent } from './ajouter-affectation-encadrant/ajouter-affectation-encadrant.component';
+import { ListeAffectationComponent } from './liste-affectation/liste-affectation.component';
+import { ListeJournalComponent } from './liste-journal/liste-journal.component';
+import { ListeSujetComponent } from './liste-sujet/liste-sujet.component';
+import { ListeRapportComponent } from './liste-rapport/liste-rapport.component';
+import { AjouterTypeStageComponent } from './ajouter-type-stage/ajouter-type-stage.component';
+import { ListeTypeStageComponent } from './liste-type-stage/liste-type-stage.component';
+import { DemandeStageComponent } from './demande-stage/demande-stage.component';
+import { ListeConfirmationStageComponent } from './liste-confirmation-stage/liste-confirmation-stage.component';
+import { AjouterLettreAffectationComponent } from './ajouter-lettre-affectation/ajouter-lettre-affectation.component';
+import { AjouterDepartmentComponent } from './ajouter-department/ajouter-department.component';
+import { ListeDepartmentComponent } from './liste-department/liste-department.component';
+import { ListeStageComponent } from './liste-stage/liste-stage.component';
+import { ListeRapportFinalComponent } from './liste-rapport-final/liste-rapport-final.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +54,25 @@ import { HomeComponent } from './home/home.component';
     ModifierAdminComponent,
     ModifierEtudiantComponent,
     ModifierEncadrantComponent,
-    HomeComponent
+    HomeComponent,
+    AjouterSpecialiteComponent,
+    ListSpecialiteComponent,
+    AjouterQualiteComponent,
+    ListeQualiteComponent,
+    AjouterAffectationEncadrantComponent,
+    ListeAffectationComponent,
+    ListeJournalComponent,
+    ListeSujetComponent,
+    ListeRapportComponent,
+    AjouterTypeStageComponent,
+    ListeTypeStageComponent,
+    DemandeStageComponent,
+    ListeConfirmationStageComponent,
+    AjouterLettreAffectationComponent,
+    AjouterDepartmentComponent,
+    ListeDepartmentComponent,
+    ListeStageComponent,
+    ListeRapportFinalComponent
   ], // ICI il manquait la fermeture du tableau
 
   imports: [ // Ce bloc était mal placé

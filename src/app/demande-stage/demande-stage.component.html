@@ -1,0 +1,92 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <!-- Mirrored from admin.pixelstrap.net/admiro/template/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:14 GMT -->
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+      <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
+      <meta name="author" content="pixelstrap">
+      <title>Admiro - Premium Admin Template</title>
+
+    </head>
+    <body>
+      <!-- page-wrapper Start-->
+      <!-- tap on top starts-->
+      <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
+      <!-- tap on tap ends-->
+      <!-- loader-->
+      <div class="loader-wrapper">
+        <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <app-header></app-header>
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+          <!-- Page sidebar start-->
+          <aside class="page-sidebar">
+            <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+            <app-menu></app-menu>
+            <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+          </aside>
+          <!-- Page sidebar end-->
+          <div class="page-body">
+            <div class="container-fluid">
+              <div class="page-title">
+                <div class="row">
+                  <div class="col-sm-6 col-12">
+                    <h2>Ajouter Demande De Stage  </h2>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- Container-fluid starts-->
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="card">
+
+
+                  </div>
+                </div>
+
+                <div class="col-xl-6">
+                  <div class="card">
+
+                    <div class="card-body">
+                      <form (ngSubmit)="addNewDemande()" [formGroup]="DemandeForm ">
+
+
+
+
+
+
+
+                        <div class="col-12">
+                          <label class="form-label" for="formFile1">Choose File</label>
+                          <input formControlName="demandeStage" (change)="OnSelectFile($event)"  class="form-control" id="formFile1" type="file" aria-label="file example" required="">
+                          <div class="invalid-feedback">Invalid form file selected</div>
+                        </div>
+
+
+                        <div class="col-12 mt-2">
+                          <button class="btn btn-primary" type="submit"> Ajouter </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <app-footer></app-footer>
+        </div>
+      </div>
+
+    </body>
+
+  <!-- Mirrored from admin.pixelstrap.net/admiro/template/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:14 GMT -->
+  </html>

@@ -1,3 +1,6 @@
+import { Qualite } from "./Qualite.Entities";
+import { Specialite } from "./Specialite.Entities";
+
 export class Encadrant {
   constructor(
     public id ?:number ,
@@ -5,8 +8,10 @@ export class Encadrant {
     public prenom ?:string ,
     public email ?:string ,
     public password ?:string ,
-    public qualite ?:string ,
+
     public tel ?:string ,
+    public qualite?:Qualite,
+    public specialite?:Specialite,
     public etat ?:boolean,
   ){
 

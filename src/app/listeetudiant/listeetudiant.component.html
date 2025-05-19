@@ -76,7 +76,8 @@
                             <td>{{etudiant.email}}	</td>
                             <td>{{etudiant.niveau}}</td>
                             <td>{{etudiant.tel}}</td>
-                            <td><a href="modifierEtudiant/{{etudiant.id}}" type="submit" class="btn btn-success">Modfier</a><button  (click)="DeleteEtudiant(etudiant)" type="submit" class="btn btn-danger">Supprimer</button></td>
+                            <td style="white-space: nowrap;">
+                              <a href="modifierEtudiant/{{etudiant.id}}" type="submit" class="btn btn-success d-inline-block">Modfier</a><button  (click)="DeleteEtudiant(etudiant)" type="submit" class="btn btn-danger d-inline-block">Supprimer</button></td>
                           </tr>
                          </tbody>
 

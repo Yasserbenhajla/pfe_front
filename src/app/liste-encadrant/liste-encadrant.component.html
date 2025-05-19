@@ -64,6 +64,7 @@
                             <th>Prénom</th>
                             <th>Email</th>
                             <th>Qualite</th>
+                            <th>specialite</th>
                             <th>Téléphone</th>
                             <th>Action</th>
                           </tr>
@@ -74,9 +75,11 @@
                             <td>{{encadrant.nom}}	</td>
                             <td>{{encadrant.prenom}} </td>
                             <td>{{encadrant.email}}	</td>
-                            <td>{{encadrant.qualite}}</td>
-                            <td>{{encadrant.tel}}</td>
-                            <td><td><a href="modifierEtudiant/{{encadrant.id}}" type="submit" class="btn btn-success">Modfier</a> <button  (click)="DeleteEncadrant(encadrant)" type="submit" class="btn btn-danger">Supprimer</button></td>
+                            <td>{{encadrant.qualite.nom}}</td>
+                            <td>{{encadrant.specialite.nom}}</td>
+                            <td>{{encadrant.tel}}	</td>
+                            <td style="white-space: nowrap;"><a href="modifierEtudiant/{{encadrant.id}}" type="submit" class="btn btn-success">Modfier</a>
+                              <button  (click)="DeleteEncadrant(encadrant)" type="submit" class="btn btn-danger">Supprimer</button></td>
                           </tr>
                          </tbody>
 

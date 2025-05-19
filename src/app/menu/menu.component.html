@@ -7,31 +7,63 @@
                     <span class="fs-5 d-none d-sm-inline">Menu</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="/home" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-                        </a>
-                    </li>
+
                     <li>
-                        <a href="/listeAdmin" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Administrateur</span> </a>
+                        <a href="Home"  class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
 
                     </li>
                     <li>
-                        <a href="/listeEtudiant" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Etudiant</span></a>
+                      <i class="fa-solid fa-user"></i>
+                        <a href="listeAdmin" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Administrateurs</span></a>
                     </li>
+
                     <li>
-                        <a href="/listeEncadrant" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Encadrant</span></a>
+                        <a href="ajouterEtudiant"  class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Etudiant</span> </a>
 
                     </li>
+                    <li>
+                        <a href="ajouterencadrant" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Encadrant</span> </a>
+                    </li>
+                    <li>
+                      <a href="ajouterAffectation" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Affectation Encadrant</span> </a>
+                  </li>
+                  <li>
+                      <a href="AjouterLettreAffectation" class="nav-link px-0 align-middle">
+
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Lettre Affectation</span> </a>
+                  </li>
+
+                  <li>
+                      <a href="ajouterQualite" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Qualite</span> </a>
+                  </li>
+                  <li>
+                      <a href="ajouterSpecialite" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Specialite</span> </a>
+                  </li>
+                  <li>
+                      <a href="AjouterTypeStage" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Type De Stage </span> </a>
+                  </li>
+                  <li>
+                      <a href="demandeStage" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Demande De Stage</span> </a>
+                  </li>
+
+
 
                 </ul>
-              
-            </div>
-
-
-
-
-</aside>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">loser</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
