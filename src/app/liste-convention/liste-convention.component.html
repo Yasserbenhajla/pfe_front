@@ -20,23 +20,22 @@
     <!-- loader-->
  
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
-
+     <app-header></app-header>
       <div class="page-body-wrapper">
         <!-- Page sidebar start-->
-
+        <app-menu></app-menu>
         <!-- Page sidebar end-->
         <div class="page-body">
           <div class="container-fluid">
             <div class="page-title">
               <div class="row">
                 <div class="col-sm-6 col-12">
-                  <h2>Advance Init</h2>
+
                 </div>
                 <div class="col-sm-6 col-12">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
-                    <li class="breadcrumb-item">Data Tables</li>
-                    <li class="breadcrumb-item active">Advance Init </li>
+
                   </ol>
                 </div>
               </div>
@@ -49,48 +48,29 @@
 
               <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header pb-0 card-no-border">
 
-                  </div>
+                  <h3>Liste de Convention De stage </h3>
                   <div class="card-body">
                     <div class="table-responsive theme-scrollbar">
                       <table class="display" id="row_create" style="width:100%">
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>description</th>
-                            <th>Status</th>
-                            <th>Nom && prénom Etudiant</th>
-                            <th>Action</th>
+                            <th>Id</th>
+                            <th>Demande De Convention</th>
 
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let convention of listerConvention">
+                              <td>{{convention.id}}</td>
+                              <td><img src="assets/pdf.jpg" style="width:40px; cursor: pointer;" (click)="downloadPdf(convention.convention)"></td>
 
 
                           </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let sujet of listSujet">
-  <td>{{ sujet.id }}</td>
-  <td>{{ sujet.description }}</td>
-  <td>  <p class="alert alert-warning" role="alert" *ngIf="sujet?.status==0">
-                        en cours
-                    </p>
-                    <p class="alert alert-success" role="alert" *ngIf="sujet?.status==2">
-                        Validée
-                    </p>
-                    <p class="alert alert-danger" role="alert" *ngIf="sujet?.status==1">
-                        Annulée
-                    </p></td>
-  <td>{{ sujet.etudiant.nom }} {{ sujet.etudiant.prenom }}</td>
-  <td  *ngIf="sujet?.status==0">
-    <button class="btn btn-success" type="button" (click)="valider(sujet)">Accepter</button>
-    <button class="btn btn-danger" type="button" (click)="annuler(sujet)">Rejeter</button>
-  </td>
-</tr>
 
 
-
-
-                         </tbody>
+                          </tbody>
 
                       </table>
                     </div>
@@ -101,7 +81,7 @@
           </div>
           <!-- Container-fluid Ends                                     -->
         </div>
-
+       <app-footer></app-footer>
       </div>
     </div>
     <!-- jquery-->

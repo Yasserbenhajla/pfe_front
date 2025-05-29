@@ -4,7 +4,7 @@ import { Specialite } from './../Entities/Specialite.Entities';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Admin } from '../Entities/Admin.Entities';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Etudiant } from '../Entities/Etudiant.Entities';
 import { Encadrant } from '../Entities/Encadrant.Entities';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -19,11 +19,17 @@ import { LettreAffectation } from '../Entities/LettreAffectation';
 import { Department } from '../Entities/Department';
 import { Stage } from '../Entities/Stage';
 import { RapportFinal } from '../Entities/RapportFinal';
+import { Convention } from '../Entities/Convention';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
+  private _reflechReserve=new Subject<void>();
+
+  get reflechReserve() {
+    return this._reflechReserve;
+  }
   apiUrl='http://localhost:8081/api'
   helper=new JwtHelperService()
   loginUserUrl='http://localhost:8081/api/Admin/login'
@@ -190,7 +196,33 @@ export class CrudService {
       return this.http.get<RapportFinal[]>(this.apiUrl + "/rapportFinal");
     }
 
-    
+      updateQualite(id:number,qualite: Qualite) {
+      const url = `${this.apiUrl+"/Qualite"}/${id}`
+      return this.http.put<any>(url,qualite);
+    }
+
+    validerOuAnnulerFromApi(rq:any){
+    return this.http.put<any>( "http://localhost:8081/api/sujet/validate-sujet" ,rq );
+  }
+
+  annuler(id:any){
+    return this.http.put("http://localhost:8081/api/sujet/annuler/"+id,{});
+  }
+
+  findQualiteById(id : number): Observable<Qualite> {
+      const url =` ${this.apiUrl + "/Qualite"}/${id};`
+      return this.http.get<Qualite>(url)
+    }
+  updateSpecialite(id:number,specialite:Specialite) {
+      const url = `${this.apiUrl+"/Specialite"}/${id}`
+      return this.http.put<any>(url,specialite);
+    }
+
+    getConvention(): Observable<Convention[]> {
+      return this.http.get<Convention[]>(this.apiUrl + "/convention");
+    }
+
+
 
 
 

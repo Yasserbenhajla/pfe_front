@@ -37,6 +37,7 @@ import { AjouterDepartmentComponent } from './ajouter-department/ajouter-departm
 import { ListeDepartmentComponent } from './liste-department/liste-department.component';
 import { ListeStageComponent } from './liste-stage/liste-stage.component';
 import { ListeRapportFinalComponent } from './liste-rapport-final/liste-rapport-final.component';
+import { ListeConventionComponent } from './liste-convention/liste-convention.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { ListeRapportFinalComponent } from './liste-rapport-final/liste-rapport-
     AjouterDepartmentComponent,
     ListeDepartmentComponent,
     ListeStageComponent,
-    ListeRapportFinalComponent
+    ListeRapportFinalComponent,
+    ListeConventionComponent,
   ], // ICI il manquait la fermeture du tableau
 
   imports: [ // Ce bloc était mal placé

@@ -1,69 +1,173 @@
-<aside class="page-sidebar">
-  <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+<aside class="modern-sidebar">
+  <div class="sidebar-container">
+    <!-- Logo Section -->
+    <div class="sidebar-header">
+      <div class="logo-section">
+        <div class="logo-container">
+          <div class="logo-icon">
+            <span class="logo-text-red">POLYTECH</span>
+            <span class="logo-text-blue">INTL</span>
+          </div>
+          <div class="logo-subtitle">GROUPE</div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
 
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+        <!-- Dashboard -->
+        <li class="nav-item" [class.active]="isActiveRoute('/home')">
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-home"></i>
+            </div>
+            <span class="nav-text">Dashboards</span>
+          </a>
+        </li>
 
-                    <li>
-                        <a href="Home"  class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+        <!-- Admin -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeAdmin')">
+          <a class="nav-link" [routerLink]="['/listeAdmin']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <span class="nav-text">Admin</span>
+          </a>
+        </li>
 
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-user"></i>
-                        <a href="listeAdmin" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Administrateurs</span></a>
-                    </li>
+        <!-- Encadrant -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeEncadrant')">
+          <a class="nav-link" [routerLink]="['/listeEncadrant']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <span class="nav-text">Encadrant</span>
+          </a>
+        </li>
 
-                    <li>
-                        <a href="ajouterEtudiant"  class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Etudiant</span> </a>
+        <!-- Étudiant -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeEtudiant')">
+          <a class="nav-link" [routerLink]="['/listeEtudiant']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <span class="nav-text">Étudiant</span>
+          </a>
+        </li>
 
-                    </li>
-                    <li>
-                        <a href="ajouterencadrant" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Encadrant</span> </a>
-                    </li>
-                    <li>
-                      <a href="ajouterAffectation" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Affectation Encadrant</span> </a>
-                  </li>
-                  <li>
-                      <a href="AjouterLettreAffectation" class="nav-link px-0 align-middle">
+        <!-- Affectation -->
+        <li class="nav-item" [class.active]="isActiveRoute('/ListeAffectation')">
+          <a class="nav-link" [routerLink]="['/ListeAffectation']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <span class="nav-text">Affectation</span>
+          </a>
+        </li>
 
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Lettre Affectation</span> </a>
-                  </li>
+        <!-- Liste Spécialité -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeSpecialite')">
+          <a class="nav-link" [routerLink]="['/listeSpecialite']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <span class="nav-text">Liste Spécialité</span>
+          </a>
+        </li>
 
-                  <li>
-                      <a href="ajouterQualite" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Qualite</span> </a>
-                  </li>
-                  <li>
-                      <a href="ajouterSpecialite" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Specialite</span> </a>
-                  </li>
-                  <li>
-                      <a href="AjouterTypeStage" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Type De Stage </span> </a>
-                  </li>
-                  <li>
-                      <a href="demandeStage" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Demande De Stage</span> </a>
-                  </li>
+        <!-- Liste Qualité -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeQualite')">
+          <a class="nav-link" [routerLink]="['/listeQualite']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="nav-text">Liste Qualité</span>
+          </a>
+        </li>
 
+        <!-- Liste Journal -->
+        <li class="nav-item" [class.active]="isActiveRoute('/ListeJournal')">
+          <a class="nav-link" [routerLink]="['/ListeJournal']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-book-journal-whills"></i>
+            </div>
+            <span class="nav-text">Liste Journal</span>
+          </a>
+        </li>
 
+      
 
-                </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">loser</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <!-- Liste Type de Stage -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeTypeStage')">
+          <a class="nav-link" [routerLink]="['/listeTypeStage']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <span class="nav-text">Liste Type de Stage</span>
+          </a>
+        </li>
+
+        <!-- Liste Confirmation Stage -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeConfirmationStage')">
+          <a class="nav-link" [routerLink]="['/listeConfirmationStage']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <span class="nav-text">Liste Confirmation Stage</span>
+          </a>
+        </li>
+
+        <!-- Liste Département -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeDepartment')">
+          <a class="nav-link" [routerLink]="['/listeDepartment']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <span class="nav-text">Liste Département</span>
+          </a>
+        </li>
+
+        <!-- Liste Stage -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeStage')">
+          <a class="nav-link" [routerLink]="['/listeStage']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <span class="nav-text">Liste Stage</span>
+          </a>
+        </li>
+
+        <!-- Liste Rapport Final -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeRapportFinal')">
+          <a class="nav-link" [routerLink]="['/listeRapportFinal']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <span class="nav-text">Liste Rapport Final</span>
+          </a>
+        </li>
+
+        <!-- Liste Convention -->
+        <li class="nav-item" [class.active]="isActiveRoute('/listeConvention')">
+          <a class="nav-link" [routerLink]="['/listeConvention']" routerLinkActive="active">
+            <div class="nav-icon">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <span class="nav-text">Liste Convention</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+      <div class="footer-text">
+        <small>Développé par yassine</small>
+      </div>
+    </div>
+
+  </div>
+</aside>

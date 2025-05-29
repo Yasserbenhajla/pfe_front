@@ -9,18 +9,18 @@
       <div class="row align-items-center">
         <div class="col-sm-6 col-12">
           <h2 class="page-title-text">
-            <i class="fas fa-building me-3"></i>
-            Gestion des Départements
+            <i class="fas fa-graduation-cap me-3"></i>
+            Gestion des Spécialités
           </h2>
           <p class="page-subtitle">
             <i class="fas fa-info-circle me-2"></i>
-            Gérez les départements de votre organisation en toute simplicité
+            Gérez les spécialités académiques et professionnelles
           </p>
         </div>
         <div class="col-sm-6 col-12 text-end">
-          <button class="btn btn-primary btn-modern" type="button" [routerLink]="['/ajouterDepartment']">
+          <button class="btn btn-primary btn-modern" type="button" [routerLink]="['/ajouterSpecialite']">
             <i class="fas fa-plus me-2"></i>
-            Nouveau Département
+            Nouvelle Spécialité
           </button>
         </div>
       </div>
@@ -44,7 +44,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="🔍 Rechercher par nom de département..."
+                    placeholder="🔍 Rechercher par nom de spécialité..."
                     [(ngModel)]="searchTerm"
                     (input)="onSearchChange()"
                   >
@@ -61,10 +61,10 @@
               </div>
             </div>
             <div class="col-md-4 text-end">
-              <div class="department-stats">
+              <div class="specialite-stats">
                 <span class="badge bg-primary fs-6">
-                  <i class="fas fa-building me-1"></i>
-                  {{filteredDepartments.length}} département(s)
+                  <i class="fas fa-graduation-cap me-1"></i>
+                  {{filteredSpecialites.length}} spécialité(s)
                 </span>
               </div>
             </div>
@@ -76,39 +76,39 @@
           <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Chargement...</span>
           </div>
-          <p class="mt-3 text-muted">Chargement des départements...</p>
+          <p class="mt-3 text-muted">Chargement des spécialités...</p>
         </div>
 
         <!-- Error State -->
         <div *ngIf="errorMessage && !isLoading" class="alert alert-danger mx-3" role="alert">
           <i class="fas fa-exclamation-triangle me-2"></i>
           {{errorMessage}}
-          <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="loadDepartments()">
+          <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="loadSpecialites()">
             <i class="fas fa-redo me-1"></i>
             Réessayer
           </button>
         </div>
 
         <!-- Empty State -->
-        <div *ngIf="!isLoading && !errorMessage && filteredDepartments.length === 0" class="empty-state">
+        <div *ngIf="!isLoading && !errorMessage && filteredSpecialites.length === 0" class="empty-state">
           <div class="text-center py-5">
-            <i class="fas fa-building fa-4x text-muted mb-3"></i>
-            <h5 class="text-muted">Aucun département trouvé</h5>
+            <i class="fas fa-graduation-cap fa-4x text-muted mb-3"></i>
+            <h5 class="text-muted">Aucune spécialité trouvée</h5>
             <p class="text-muted" *ngIf="searchTerm">
               Aucun résultat pour "{{searchTerm}}"
             </p>
             <p class="text-muted" *ngIf="!searchTerm">
-              Commencez par ajouter votre premier département
+              Commencez par ajouter votre première spécialité
             </p>
-            <button class="btn btn-primary btn-modern mt-3" [routerLink]="['/ajouterDepartment']">
+            <button class="btn btn-primary btn-modern mt-3" [routerLink]="['/ajouterSpecialite']">
               <i class="fas fa-plus me-2"></i>
-              Ajouter un Département
+              Ajouter une Spécialité
             </button>
           </div>
         </div>
 
         <!-- Table Content -->
-        <div *ngIf="!isLoading && !errorMessage && filteredDepartments.length > 0" class="card-body p-0">
+        <div *ngIf="!isLoading && !errorMessage && filteredSpecialites.length > 0" class="card-body p-0">
           <div class="table-responsive">
             <table class="table table-hover modern-table">
               <thead class="table-header">
@@ -121,8 +121,8 @@
                   </th>
                   <th scope="col">
                     <div class="d-flex align-items-center">
-                      <i class="fas fa-building me-2 text-muted"></i>
-                      Nom du Département
+                      <i class="fas fa-graduation-cap me-2 text-muted"></i>
+                      Nom de la Spécialité
                     </div>
                   </th>
                   <th scope="col" class="text-center">
@@ -134,18 +134,18 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let department of filteredDepartments; trackBy: trackByDepartmentId" class="department-row">
+                <tr *ngFor="let specialite of filteredSpecialites; trackBy: trackBySpecialiteId" class="specialite-row">
                   <td class="text-center">
-                    <span class="department-id">#{{department.id}}</span>
+                    <span class="specialite-id">#{{specialite.id}}</span>
                   </td>
                   <td>
-                    <div class="department-info">
-                      <div class="department-icon">
-                        <i class="fas fa-building fa-2x text-primary"></i>
+                    <div class="specialite-info">
+                      <div class="specialite-icon">
+                        <i class="fas fa-graduation-cap fa-2x text-info"></i>
                       </div>
-                      <div class="department-details">
-                        <div class="department-name">{{department.nom}}</div>
-                        <small class="text-muted">Département organisationnel</small>
+                      <div class="specialite-details">
+                        <div class="specialite-name">{{specialite.nom}}</div>
+                        <small class="text-muted">Spécialité académique</small>
                       </div>
                     </div>
                   </td>
@@ -154,14 +154,14 @@
                       <button
                         class="btn btn-sm btn-outline-primary me-2"
                         title="Modifier"
-                        [routerLink]="['/modifierDepartment', department.id]"
+                        [routerLink]="['/modifierSpecialite', specialite.id]"
                       >
                         <i class="fas fa-edit"></i>
                       </button>
                       <button
                         class="btn btn-sm btn-outline-danger"
                         title="Supprimer"
-                        (click)="deleteDepartment(department.id, department.nom)"
+                        (click)="deleteSpecialite(specialite.id, specialite.nom)"
                       >
                         <i class="fas fa-trash"></i>
                       </button>

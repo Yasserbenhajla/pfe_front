@@ -29,6 +29,7 @@ import { AjouterDepartmentComponent } from './ajouter-department/ajouter-departm
 import { ListeDepartmentComponent } from './liste-department/liste-department.component';
 import { ListeStageComponent } from './liste-stage/liste-stage.component';
 import { ListeRapportFinalComponent } from './liste-rapport-final/liste-rapport-final.component';
+import { ListeConventionComponent } from './liste-convention/liste-convention.component';
 
 const routes: Routes = [
   {path:'ajouterAdmin',component:AjouterAdminComponent},
@@ -36,7 +37,7 @@ const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'ajouterEtudiant',component:AjouterEtudiantComponent},
   {path:'listeEtudiant',component:ListeetudiantComponent},
-  {path:'ajouterencadrant',component:AjouterEncadrantComponent},
+  {path:'ajouterEncadrant',component:AjouterEncadrantComponent},
   {path:'listeEncadrant',component:ListeEncadrantComponent},
   {path:'modifierAdmin/:id',component:ModifierAdminComponent},
   {path:'modifierEtudiant/:id',component:ModifierEtudiantComponent},
@@ -49,7 +50,7 @@ const routes: Routes = [
   {path:'ajouterAffectation',component:AjouterAffectationEncadrantComponent},
   {path:'ListeAffectation',component:ListeAffectationComponent},
   {path:'ListeJournal',component:ListeJournalComponent},
-  {path:'ListeSujet',component:ListeSujetComponent},
+  {path:'listesujet',component:ListeSujetComponent},
   {path:'listeRapport', component:ListeRapportComponent},
   {path:'AjouterTypeStage', component:AjouterTypeStageComponent},
   {path:'listeTypeStage', component:ListeTypeStageComponent},
@@ -60,6 +61,8 @@ const routes: Routes = [
   {path:'listeDepartment',component:ListeDepartmentComponent},
   {path:'listeStage',component:ListeStageComponent},
   {path:'listeRapportFinal',component:ListeRapportFinalComponent},
+  {path:'listeConvention', component:ListeConventionComponent},
+
 
 
 

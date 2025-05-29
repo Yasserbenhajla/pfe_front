@@ -11,10 +11,14 @@ import { CrudService } from '../service/crud.service';
 })
 export class AjouterAdminComponent {
 
-messageCommande=""
-  adminForm:FormGroup
+  messageCommande = ""
+  adminForm: FormGroup
+  successMessage: string = ''
+  errorMessage: string = ''
+  showPassword: boolean = false
+  isSubmitting: boolean = false
 
-  constructor(private services : CrudService , private router : Router,private fb:FormBuilder) {
+  constructor(private services: CrudService, private router: Router, private fb: FormBuilder) {
     let formControls = {
       nom: new FormControl('',[
         Validators.required,
@@ -37,46 +41,54 @@ messageCommande=""
   get password() {return this.adminForm.get('password');}
   get role() {return this.adminForm.get('role');}
 
-   addNewAdmin() {
-    let data = this.adminForm.value;
-    console.log(data);
-    let admin = new Admin(
-     undefined, data.nom,data.prenom,data.email,data.password,data.role);
-    console.log(admin);
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
 
-    if (
-      data.nom == 0 ||
-      data.prenom == 0 ||
-      data.email == 0||
-      data.password == 0||
-      data.role == 0
-    ) {
-      this.messageCommande=`<div class="alert alert-danger" role="alert">
-      remplir votre champ
-    </div>`
-
-    } else {
-    this.services.addadmin(admin).subscribe(
-      res=>{
-        console.log(res);
-        this.messageCommande=`<div class="alert alert-success" role="alert">
-        avec success
-      </div>`
-
-        this.router.navigate(['/listeAdmin']).then(()=>{window.location.reload()})
-        ;
-      },
-       err=>{
-        this.messageCommande=`<div class="alert alert-warning" role="alert">
-        EMAIL EXISTE deja!!!!
-      </div>`
-
-      })
-      setTimeout(() => {
-        this.messageCommande=""
-      }, 3000);
-
+  addNewAdmin(): void {
+    if (this.adminForm.invalid) {
+      this.markFormGroupTouched();
+      this.errorMessage = 'Veuillez remplir tous les champs requis correctement.';
+      return;
     }
+
+    this.isSubmitting = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    const data = this.adminForm.value;
+    const admin = new Admin(
+      undefined,
+      data.nom,
+      data.prenom,
+      data.email,
+      data.password,
+      data.role
+    );
+
+    this.services.addadmin(admin).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.successMessage = 'Administrateur ajouté avec succès !';
+        this.isSubmitting = false;
+
+        setTimeout(() => {
+          this.router.navigate(['/listeAdmin']);
+        }, 2000);
+      },
+      error: (error) => {
+        console.error('Erreur:', error);
+        this.errorMessage = 'Erreur lors de l\'ajout. L\'email existe peut-être déjà.';
+        this.isSubmitting = false;
+      }
+    });
+  }
+
+  private markFormGroupTouched(): void {
+    Object.keys(this.adminForm.controls).forEach(key => {
+      const control = this.adminForm.get(key);
+      control?.markAsTouched();
+    });
   }
 
 
@@ -84,4 +96,5 @@ messageCommande=""
   ngOnInit(): void {
   }
 }
+
 

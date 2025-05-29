@@ -1,116 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Sidebar Menu -->
+<app-menu></app-menu>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:14 GMT -->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <title>Admiro - Premium Admin Template</title>
-    <!-- Favicon icon-->
-
-  </head>
-  <body>
-    <!-- page-wrapper Start-->
-    <!-- tap on top starts-->
-    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
-    <!-- tap on tap ends-->
-    <!-- loader-->
-    <div class="loader-wrapper">
-      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
-     <app-header></app-header>
-      <!-- Page Body Start-->
-      <div class="page-body-wrapper">
-        <!-- Page sidebar start-->
-      <app-menu></app-menu>
-        <!-- Page sidebar end-->
-        <div class="page-body">
-          <div class="container-fluid">
-            <div class="page-title">
-              <div class="row">
-                <div class="col-sm-6 col-12">
-                  <h2>Base Inputs</h2>
-                </div>
-                <div class="col-sm-6 col-12">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
-                    <li class="breadcrumb-item">Form Controls</li>
-                    <li class="breadcrumb-item active">Base Inputs</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid starts  -->
-          <div class="container-fluid">
-            <div class="row">
-
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header card-no-border pb-0">
-                    <h3>Ajouter Administrateur </h3>
-
-                  </div>
-                  <div class="card-body basic-form">
-                    <form class="theme-form row g-3" (ngSubmit)="addNewAffectation()" [formGroup]="affectationForm">
-                      <div class="col-sm-3">
-                        <label class="form-label">Encadrant</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <select formControlName="encadrant" class="form-control">
-                          <option
-                            *ngFor="let encadrant of listeEncadrant"
-                            value="{{ encadrant.id }}"
-                          >
-                            {{ encadrant.nom }}
-                            {{ encadrant.prenom }}
-                          </option>
-                        </select>
-                      </div>
-                      <div class="col-sm-3">
-                        <label class="form-label">Sujet</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <select formControlName="sujet" class="form-control">
-                          <option
-                            *ngFor="let sujet of listeSujet"
-                            value="{{ sujet.id }}"
-                          >
-                            {{ sujet.description}}
-
-                          </option>
-                        </select>
-                      </div>
-
-
-
-
-                        <div class="col-sm-3">
-                          <button type="submit" class="btn btn-primary">Ajouter</button>
-
-                        </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-            </div>
-          </div>
+<!-- Main Content Area -->
+<div class="main-content">
+  <!-- Page Header -->
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-sm-6 col-12">
+          <h2 class="page-title-text">
+            <i class="fas fa-link me-3"></i>
+            Créer une Affectation
+          </h2>
+          <p class="page-subtitle">
+            <i class="fas fa-info-circle me-2"></i>
+            Assignez un encadrant à un sujet de projet
+          </p>
         </div>
-      <app-footer></app-footer>
+        <div class="col-sm-6 col-12 text-end">
+          <button class="btn btn-secondary btn-modern" type="button" [routerLink]="['/listeAffectation']">
+            <i class="fas fa-arrow-left me-2"></i>
+            Retour à la Liste
+          </button>
+        </div>
       </div>
     </div>
-    <!-- jquery-->
+  </div>
 
-  </body>
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-12">
+        <div class="card modern-card">
+          <!-- Form Header -->
+          <div class="card-header border-0 pb-0">
+            <div class="form-header">
+              <div class="form-icon">
+                <i class="fas fa-handshake fa-2x"></i>
+              </div>
+              <div class="form-title">
+                <h4>Nouvelle Affectation</h4>
+                <p class="text-muted">Sélectionnez un encadrant et un sujet pour créer l'affectation</p>
+              </div>
+            </div>
+          </div>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:14 GMT -->
-</html>
+          <!-- Form Body -->
+          <div class="card-body">
+            <!-- Success/Error Messages -->
+            <div class="alert alert-success" *ngIf="successMessage" role="alert">
+              <i class="fas fa-check-circle me-2"></i>
+              {{successMessage}}
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              {{errorMessage}}
+            </div>
+
+            <!-- Message from component -->
+            <div *ngIf="messageCommande" [innerHTML]="messageCommande"></div>
+
+            <form class="modern-form" (ngSubmit)="addNewAffectation()" [formGroup]="affectationForm">
+              <div class="row g-4">
+                <!-- Encadrant Selection -->
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-chalkboard-teacher me-2"></i>
+                      Sélectionner un Encadrant <span class="text-danger">*</span>
+                    </label>
+                    <select
+                      class="form-control modern-select"
+                      formControlName="encadrant"
+                      [class.is-invalid]="encadrant?.invalid && encadrant?.touched"
+                      [class.is-valid]="encadrant?.valid && encadrant?.touched"
+                    >
+                      <option value="">Choisissez un encadrant</option>
+                      <option *ngFor="let encadrant of listeEncadrant" [value]="encadrant.id">
+                        <i class="fas fa-user-tie me-2"></i>
+                        {{encadrant.prenom}} {{encadrant.nom}}
+                        <span class="text-muted" *ngIf="encadrant.specialite">
+                          - {{encadrant.specialite.nom}}
+                        </span>
+                      </option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="encadrant?.invalid && encadrant?.touched">
+                      <small *ngIf="encadrant?.errors?.['required']">La sélection d'un encadrant est requise</small>
+                    </div>
+                    <div class="form-text">
+                      <i class="fas fa-info-circle me-1"></i>
+                      Sélectionnez l'encadrant qui supervisera ce projet
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sujet Selection -->
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-book me-2"></i>
+                      Sélectionner un Sujet <span class="text-danger">*</span>
+                    </label>
+                    <select
+                      class="form-control modern-select"
+                      formControlName="sujet"
+                      [class.is-invalid]="sujet?.invalid && sujet?.touched"
+                      [class.is-valid]="sujet?.valid && sujet?.touched"
+                    >
+                      <option value="">Choisissez un sujet</option>
+                      <option *ngFor="let sujet of listeSujet" [value]="sujet.id">
+                        <i class="fas fa-project-diagram me-2"></i>
+                        {{sujet.description}}
+                        <span class="text-muted" *ngIf="sujet.etudiant">
+                          - Étudiant: {{sujet.etudiant.prenom}} {{sujet.etudiant.nom}}
+                        </span>
+                      </option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="sujet?.invalid && sujet?.touched">
+                      <small *ngIf="sujet?.errors?.['required']">La sélection d'un sujet est requise</small>
+                    </div>
+                    <div class="form-text">
+                      <i class="fas fa-info-circle me-1"></i>
+                      Choisissez le sujet de projet à assigner
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Summary Section -->
+                <div class="col-12" *ngIf="affectationForm.valid">
+                  <div class="affectation-summary">
+                    <h6 class="summary-title">
+                      <i class="fas fa-clipboard-check me-2"></i>
+                      Résumé de l'Affectation
+                    </h6>
+                    <div class="summary-content">
+                      <div class="summary-item">
+                        <strong>Encadrant:</strong>
+                        <span *ngIf="getSelectedEncadrant()">
+                          {{getSelectedEncadrant()?.prenom}} {{getSelectedEncadrant()?.nom}}
+                          <span class="badge bg-info ms-2" *ngIf="getSelectedEncadrant()?.specialite">
+                            {{getSelectedEncadrant()?.specialite?.nom}}
+                          </span>
+                        </span>
+                      </div>
+                      <div class="summary-item">
+                        <strong>Sujet:</strong>
+                        <span *ngIf="getSelectedSujet()">
+                          {{getSelectedSujet()?.description}}
+                          <span class="badge bg-secondary ms-2" *ngIf="getSelectedSujet()?.etudiant">
+                            {{getSelectedSujet()?.etudiant?.prenom}} {{getSelectedSujet()?.etudiant?.nom}}
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Actions -->
+              <div class="form-actions">
+                <div class="row">
+                  <div class="col-md-6">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-modern w-100"
+                      [routerLink]="['/listeAffectation']"
+                    >
+                      <i class="fas fa-times me-2"></i>
+                      Annuler
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-modern w-100"
+                      [disabled]="affectationForm.invalid || isSubmitting"
+                    >
+                      <span *ngIf="!isSubmitting">
+                        <i class="fas fa-plus me-2"></i>
+                        Créer l'Affectation
+                      </span>
+                      <span *ngIf="isSubmitting">
+                        <i class="fas fa-spinner fa-spin me-2"></i>
+                        Création en cours...
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

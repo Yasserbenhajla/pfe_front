@@ -1,6 +1,6 @@
 
 
-export class SaveStage {
+export class SaveSujet {
   constructor(
     public id?: number,
     public intitule?: string,

@@ -13,6 +13,10 @@ export class AjouterEtudiantComponent {
 
   messageCommande = "";
   etudiantForm: FormGroup;
+  successMessage: string = '';
+  errorMessage: string = '';
+  showPassword: boolean = false;
+  isSubmitting: boolean = false;
 
   constructor(private services: CrudService, private router: Router, private fb: FormBuilder) {
     let formControls = {
@@ -33,35 +37,55 @@ export class AjouterEtudiantComponent {
   get niveau() { return this.etudiantForm.get('niveau'); }
   get tel() { return this.etudiantForm.get('tel'); }
 
-  addNewEtudiant() {
-    let data = this.etudiantForm.value;
-    let etudiant = new Etudiant(
-      undefined, data.nom, data.prenom, data.email, data.password, data.niveau, data.tel
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  addNewEtudiant(): void {
+    if (this.etudiantForm.invalid) {
+      this.markFormGroupTouched();
+      this.errorMessage = 'Veuillez remplir tous les champs requis correctement.';
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    const data = this.etudiantForm.value;
+    const etudiant = new Etudiant(
+      undefined,
+      data.nom,
+      data.prenom,
+      data.email,
+      data.password,
+      data.niveau,
+      data.tel
     );
 
-    if (!data.nom || !data.prenom || !data.email || !data.password || !data.niveau || !data.tel) {
-      this.messageCommande = `<div class="alert alert-danger" role="alert">
-      Veuillez remplir tous les champs
-    </div>`;
-    } else {
-      this.services.addetudiant(etudiant).subscribe(
-        res => {
-          console.log(res);
-          this.messageCommande = `<div class="alert alert-success" role="alert">
-          Étudiant ajouté avec succès
-        </div>`;
-          this.router.navigate(['/listeEtudiants']).then(() => { window.location.reload(); });
-        },
-        err => {
-          this.messageCommande = `<div class="alert alert-warning" role="alert">
-          L'email existe déjà !
-        </div>`;
-        }
-      );
-      setTimeout(() => {
-        this.messageCommande = "";
-      }, 3000);
-    }
+    this.services.addetudiant(etudiant).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.successMessage = 'Étudiant ajouté avec succès !';
+        this.isSubmitting = false;
+
+        setTimeout(() => {
+          this.router.navigate(['/listeEtudiant']);
+        }, 2000);
+      },
+      error: (error) => {
+        console.error('Erreur:', error);
+        this.errorMessage = 'Erreur lors de l\'ajout. L\'email existe peut-être déjà.';
+        this.isSubmitting = false;
+      }
+    });
+  }
+
+  private markFormGroupTouched(): void {
+    Object.keys(this.etudiantForm.controls).forEach(key => {
+      const control = this.etudiantForm.get(key);
+      control?.markAsTouched();
+    });
   }
 
   ngOnInit(): void {}

@@ -1,94 +1,179 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Sidebar Menu -->
+<app-menu></app-menu>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:30 GMT -->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <title>Admiro - Premium Admin Template</title>
-    <!-- Favicon icon-->
-
-  </head>
-  <body>
-    <!-- tap on top starts-->
-    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
-    <!-- tap on tap ends-->
-    <!-- loader-->
-    <div class="loader-wrapper">
-      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
-     <app-header></app-header>
-      <div class="page-body-wrapper">
-        <!-- Page sidebar start-->
-        <app-menu></app-menu>
-        <!-- Page sidebar end-->
-        <div class="page-body">
-          <div class="container-fluid">
-            <div class="page-title">
-              <div class="row">
-                <div class="col-sm-6 col-12">
-                  <h2>Advance Init</h2>
-                </div>
-                <div class="col-sm-6 col-12">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
-                    <li class="breadcrumb-item">Liste De Type De Stage </li>
-                    <li class="breadcrumb-item active">Advance Init </li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid starts                   -->
-          <div class="container-fluid">
-            <div class="row">
-              <!-- Stock result -->
-
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header pb-0 card-no-border">
-
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive theme-scrollbar">
-                      <table class="display" id="row_create" style="width:100%">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Nom</th>
-
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let typeStage of listTypeStage">
-                            <td>{{typeStage.id}}	</td>
-                            <td>{{typeStage.nom}}	</td>
-
-
-                          </tr>
-                         </tbody>
-
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid Ends                                     -->
+<!-- Main Content Area -->
+<div class="main-content">
+  <!-- Page Header -->
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-sm-6 col-12">
+          <h2 class="page-title-text">
+            <i class="fas fa-briefcase me-3"></i>
+            Gestion des Types de Stage
+          </h2>
+          <p class="page-subtitle">
+            <i class="fas fa-info-circle me-2"></i>
+            Gérez les différents types de stages disponibles
+          </p>
         </div>
-       <app-footer></app-footer>
+        <div class="col-sm-6 col-12 text-end">
+          <button class="btn btn-primary btn-modern" type="button" [routerLink]="['/AjouterTypeStage']">
+            <i class="fas fa-plus me-2"></i>
+            Nouveau Type de Stage
+          </button>
+        </div>
       </div>
     </div>
-    <!-- jquery-->
+  </div>
 
-  </body>
+<!-- Main Content -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card modern-card">
+        <!-- Search Bar -->
+        <div class="card-header border-0 pb-3">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <div class="search-container">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="🔍 Rechercher par nom de type de stage..."
+                    [(ngModel)]="searchTerm"
+                    (input)="onSearchChange()"
+                  >
+                  <button
+                    *ngIf="searchTerm"
+                    class="btn"
+                    type="button"
+                    (click)="clearSearch()"
+                    title="Effacer la recherche"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 text-end">
+              <div class="typestage-stats">
+                <span class="badge bg-primary fs-6">
+                  <i class="fas fa-briefcase me-1"></i>
+                  {{filteredTypeStages.length}} type(s) de stage
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:31 GMT -->
-</html>
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Chargement...</span>
+          </div>
+          <p class="mt-3 text-muted">Chargement des types de stage...</p>
+        </div>
+
+        <!-- Error State -->
+        <div *ngIf="errorMessage && !isLoading" class="alert alert-danger mx-3" role="alert">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          {{errorMessage}}
+          <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="loadTypeStages()">
+            <i class="fas fa-redo me-1"></i>
+            Réessayer
+          </button>
+        </div>
+
+        <!-- Empty State -->
+        <div *ngIf="!isLoading && !errorMessage && filteredTypeStages.length === 0" class="empty-state">
+          <div class="text-center py-5">
+            <i class="fas fa-briefcase fa-4x text-muted mb-3"></i>
+            <h5 class="text-muted">Aucun type de stage trouvé</h5>
+            <p class="text-muted" *ngIf="searchTerm">
+              Aucun résultat pour "{{searchTerm}}"
+            </p>
+            <p class="text-muted" *ngIf="!searchTerm">
+              Commencez par ajouter votre premier type de stage
+            </p>
+            <button class="btn btn-primary btn-modern mt-3" [routerLink]="['/AjouterTypeStage']">
+              <i class="fas fa-plus me-2"></i>
+              Ajouter un Type de Stage
+            </button>
+          </div>
+        </div>
+
+        <!-- Table Content -->
+        <div *ngIf="!isLoading && !errorMessage && filteredTypeStages.length > 0" class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover modern-table">
+              <thead class="table-header">
+                <tr>
+                  <th scope="col" class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <i class="fas fa-hashtag me-2 text-muted"></i>
+                      ID
+                    </div>
+                  </th>
+                  <th scope="col">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-briefcase me-2 text-muted"></i>
+                      Nom du Type de Stage
+                    </div>
+                  </th>
+                  <th scope="col" class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <i class="fas fa-cogs me-2 text-muted"></i>
+                      Actions
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let typeStage of filteredTypeStages; trackBy: trackByTypeStageId" class="typestage-row">
+                  <td class="text-center">
+                    <span class="typestage-id">#{{typeStage.id}}</span>
+                  </td>
+                  <td>
+                    <div class="typestage-info">
+                      <div class="typestage-icon">
+                        <i class="fas fa-briefcase fa-2x text-success"></i>
+                      </div>
+                      <div class="typestage-details">
+                        <div class="typestage-name">{{typeStage.nom}}</div>
+                        <small class="text-muted">Type de stage professionnel</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <div class="action-buttons">
+                      <button
+                        class="btn btn-sm btn-outline-primary me-2"
+                        title="Modifier"
+                        [routerLink]="['/modifierTypeStage', typeStage.id]"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        title="Supprimer"
+                        (click)="deleteTypeStage(typeStage.id, typeStage.nom)"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -17,7 +17,7 @@ export class HomeComponent {
   totalEncadrant: number = 0;
   chart: any = [];
   Encadrant: Encadrant[] = [];
-  myGroup: FormGroup; // Define FormGroup
+  myGroup: FormGroup;
 
   constructor(private router: Router, private service: CrudService) {
     this.userDetails = this.service.userDetails();

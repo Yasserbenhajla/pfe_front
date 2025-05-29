@@ -11868,11 +11868,11 @@ textarea.form-control-lg {
   --white: #ffffff;
   --black: #000000;
   --body-font-color: #292929;
-  --font-color: #aaa3a0;
+  --font-color: #ffff;
   --shape-border: #e5e5e5;
-  --scrollbar-color: #aeaeae;
+  --scrollbar-color: #fff;
   --light-border: #dceee6;
-  --theme-default: #308e87;
+  --theme-default: #e0d8d8db;
   --theme-secondary: #f39159;
   --body-color: #f9f7f6;
   --primary-color: #308e87;
@@ -16144,16 +16144,19 @@ div .action .delete i {
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   margin: 0;
   color: var(--body-font-color) !important;
+  display: none;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button:active {
   background: var(--theme-default);
   color: #ffffff !important;
   box-shadow: none;
+  display: none;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-  border: 1px solid var(--theme-default);
+  border: px solid var(--theme-default);
   color: var(--dark-color) !important;
   background: transparent !important;
+  
 }
 .dataTables_wrapper .dataTables_length {
   margin-bottom: 30px;
@@ -23350,7 +23353,7 @@ label {
 }
 
 /**=====================
-     2.13 Datapicker CSS End 
+     2.13 Datapicker CSS End
   ==========================**/
 .touchspin-wrapper .btn-touchspin {
   border-radius: 5px;
@@ -28155,7 +28158,7 @@ input::-webkit-inner-spin-button {
   width: 253px;
   justify-content: space-between;
   padding: 15px 16px;
-  background-color: var(--theme-default);
+  background-color: #ffffff;
 }
 @media (max-width: 1199px) {
   .page-header .logo-wrapper {
@@ -34451,7 +34454,7 @@ p.data-attributes svg {
 }
 .left-sidebar-wrapper * {
   scrollbar-width: auto;
-  scrollbar-color: rgba(48, 142, 135, 0.5) var(--white);
+  scrollbar-color: #fff;
 }
 .left-sidebar-wrapper *::-webkit-scrollbar {
   width: 12px;
@@ -47375,10 +47378,12 @@ label {
   display: inline-flex;
   border: 0 !important;
   box-shadow: 0 0 10px var(--theme-default);
+  display: none;
 }
 .sidebar-pannle-main ul .icon-btn i {
   font-size: 22px;
   color: var(--white);
+  display: none;
 }
 
 .setting-sidebar {

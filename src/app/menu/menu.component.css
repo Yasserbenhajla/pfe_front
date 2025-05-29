@@ -1,0 +1,166 @@
+/* Modern Sidebar Styles */
+.modern-sidebar {
+  background: #2c3e50;
+  width: 240px;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Logo Section */
+.sidebar-header {
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-section {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 0.25rem;
+}
+
+.logo-text-red {
+  color: #e74c3c;
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: -0.5px;
+}
+
+.logo-text-blue {
+  color: #3498db;
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: -0.5px;
+}
+
+.logo-subtitle {
+  color: #95a5a6;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Navigation Styles */
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0.25rem 0;
+  transition: all 0.2s ease;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ecf0f1;
+  text-decoration: none;
+  border-left-color: #3498db;
+}
+
+.nav-item.active .nav-link {
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+  border-left-color: #3498db;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.nav-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Footer Styles */
+.sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.footer-text {
+  text-align: center;
+}
+
+.footer-text small {
+  color: #95a5a6;
+  font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-sidebar {
+    width: 200px;
+  }
+
+  .nav-text {
+    font-size: 0.8rem;
+  }
+
+  .logo-text-red,
+  .logo-text-blue {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .modern-sidebar {
+    width: 180px;
+  }
+
+  .nav-link {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav-text {
+    font-size: 0.75rem;
+  }
+}

@@ -1,121 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Sidebar Menu -->
+<app-menu></app-menu>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:14 GMT -->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <title>Admiro - Premium Admin Template</title>
-    <!-- Favicon icon-->
-
-  </head>
-  <body>
-    <!-- page-wrapper Start-->
-    <!-- tap on top starts-->
-    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
-    <!-- tap on tap ends-->
-    <!-- loader-->
-    <div class="loader-wrapper">
-      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
-     <app-header></app-header>
-      <!-- Page Body Start-->
-      <div class="page-body-wrapper">
-        <!-- Page sidebar start-->
-      <app-menu></app-menu>
-        <!-- Page sidebar end-->
-        <div class="page-body">
-          <div class="container-fluid">
-            <div class="page-title">
-              <div class="row">
-                <div class="col-sm-6 col-12">
-                  <h2>Base Inputs</h2>
-                </div>
-                <div class="col-sm-6 col-12">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
-                    <li class="breadcrumb-item">Form Controls</li>
-                    <li class="breadcrumb-item active">Base Inputs</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid starts  -->
-          <div class="container-fluid">
-            <div class="row">
-
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header card-no-border pb-0">
-                    <h3>Ajouter Administrateur </h3>
-
-                  </div>
-                  <div class="card-body basic-form">
-                    <form class="theme-form row g-3" (ngSubmit)="addNewAdmin()" [formGroup]="adminForm">
-                      <div class="col-sm-3">
-                        <label class="form-label">Nom</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input class="form-control" type="text" placeholder="Nom" formControlName="nom">
-                      </div>
-                      <div class="col-sm-3">
-                        <label class="form-label">Prenom</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input class="form-control" type="text" placeholder="prenom" formControlName="prenom">
-                      </div>
-                      <div class="col-sm-3">
-                        <label class="form-label">Email</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input class="form-control" type="email" placeholder="adresse email" formControlName="email">
-                      </div>
-                      <div class="col-sm-3">
-                        <label class="form-label">Mot De Passe</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input class="form-control" type="password" placeholder="mot de passe " formControlName="password">
-                      </div>
-                      <div class="col-sm-3">
-                        <label class="form-label">Role</label>
-                      </div>
-                      <div class="col-sm-9">
-                       <select class="form-control" formControlName="role">
-                        <option value="superAdmin">Super Administrateur</option>
-
-                        <option value="sousAdmin">Sous Administrateur</option>
-
-                        <option value="Commission De Stage">Commission De Stage</option>
-                      </select>
-                        </div>
-
-                        <div class="col-sm-3">
-                          <button type="submit" class="btn btn-primary">Ajouter</button>
-
-                        </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-            </div>
-          </div>
+<!-- Main Content Area -->
+<div class="main-content">
+  <!-- Page Header -->
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-sm-6 col-12">
+          <h2 class="page-title-text">
+            <i class="fas fa-user-plus me-3"></i>
+            Ajouter un Administrateur
+          </h2>
+          <p class="page-subtitle">
+            <i class="fas fa-info-circle me-2"></i>
+            Créez un nouveau compte administrateur pour votre plateforme
+          </p>
         </div>
-      <app-footer></app-footer>
+        <div class="col-sm-6 col-12 text-end">
+          <button class="btn btn-secondary btn-modern" type="button" [routerLink]="['/listeAdmin']">
+            <i class="fas fa-arrow-left me-2"></i>
+            Retour à la Liste
+          </button>
+        </div>
       </div>
     </div>
-    <!-- jquery-->
+  </div>
 
-  </body>
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-12">
+        <div class="card modern-card">
+          <!-- Form Header -->
+          <div class="card-header border-0 pb-0">
+            <div class="form-header">
+              <div class="form-icon">
+                <i class="fas fa-user-shield fa-2x"></i>
+              </div>
+              <div class="form-title">
+                <h4>Informations de l'Administrateur</h4>
+                <p class="text-muted">Remplissez tous les champs requis pour créer le compte</p>
+              </div>
+            </div>
+          </div>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:14 GMT -->
-</html>
+          <!-- Form Body -->
+          <div class="card-body">
+            <!-- Success/Error Messages -->
+            <div class="alert alert-success" *ngIf="successMessage" role="alert">
+              <i class="fas fa-check-circle me-2"></i>
+              {{successMessage}}
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              {{errorMessage}}
+            </div>
+
+            <form class="modern-form" (ngSubmit)="addNewAdmin()" [formGroup]="adminForm">
+              <div class="row g-4">
+                <!-- Nom -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-user me-2"></i>
+                      Nom <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      class="form-control modern-input"
+                      type="text"
+                      placeholder="Entrez le nom"
+                      formControlName="nom"
+                      [class.is-invalid]="nom?.invalid && nom?.touched"
+                      [class.is-valid]="nom?.valid && nom?.touched"
+                    >
+                    <div class="invalid-feedback" *ngIf="nom?.invalid && nom?.touched">
+                      <small *ngIf="nom?.errors?.['required']">Le nom est requis</small>
+                      <small *ngIf="nom?.errors?.['minlength']">Le nom doit contenir au moins 2 caractères</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Prénom -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-user me-2"></i>
+                      Prénom <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      class="form-control modern-input"
+                      type="text"
+                      placeholder="Entrez le prénom"
+                      formControlName="prenom"
+                      [class.is-invalid]="prenom?.invalid && prenom?.touched"
+                      [class.is-valid]="prenom?.valid && prenom?.touched"
+                    >
+                    <div class="invalid-feedback" *ngIf="prenom?.invalid && prenom?.touched">
+                      <small *ngIf="prenom?.errors?.['required']">Le prénom est requis</small>
+                      <small *ngIf="prenom?.errors?.['minlength']">Le prénom doit contenir au moins 2 caractères</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-envelope me-2"></i>
+                      Adresse Email <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      class="form-control modern-input"
+                      type="email"
+                      placeholder="exemple@email.com"
+                      formControlName="email"
+                      [class.is-invalid]="email?.invalid && email?.touched"
+                      [class.is-valid]="email?.valid && email?.touched"
+                    >
+                    <div class="invalid-feedback" *ngIf="email?.invalid && email?.touched">
+                      <small *ngIf="email?.errors?.['required']">L'email est requis</small>
+                      <small *ngIf="email?.errors?.['email']">Format d'email invalide</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-lock me-2"></i>
+                      Mot de Passe <span class="text-danger">*</span>
+                    </label>
+                    <div class="password-input-group">
+                      <input
+                        class="form-control modern-input"
+                        [type]="showPassword ? 'text' : 'password'"
+                        placeholder="Entrez le mot de passe"
+                        formControlName="password"
+                        [class.is-invalid]="password?.invalid && password?.touched"
+                        [class.is-valid]="password?.valid && password?.touched"
+                      >
+                      <button
+                        type="button"
+                        class="password-toggle"
+                        (click)="togglePassword()"
+                      >
+                        <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                      </button>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="password?.invalid && password?.touched">
+                      <small *ngIf="password?.errors?.['required']">Le mot de passe est requis</small>
+                      <small *ngIf="password?.errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Rôle -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fas fa-user-tag me-2"></i>
+                      Rôle <span class="text-danger">*</span>
+                    </label>
+                    <select
+                      class="form-control modern-select"
+                      formControlName="role"
+                      [class.is-invalid]="role?.invalid && role?.touched"
+                      [class.is-valid]="role?.valid && role?.touched"
+                    >
+                      <option value="">Sélectionnez un rôle</option>
+                      <option value="superAdmin">Super Administrateur</option>
+                      <option value="sousAdmin">Sous Administrateur</option>
+                      <option value="Commission De Stage">Commission De Stage</option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="role?.invalid && role?.touched">
+                      <small *ngIf="role?.errors?.['required']">Le rôle est requis</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Actions -->
+              <div class="form-actions">
+                <div class="row">
+                  <div class="col-md-6">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-modern w-100"
+                      [routerLink]="['/listeAdmin']"
+                    >
+                      <i class="fas fa-times me-2"></i>
+                      Annuler
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-modern w-100"
+                      [disabled]="adminForm.invalid || isSubmitting"
+                    >
+                      <span *ngIf="!isSubmitting">
+                        <i class="fas fa-plus me-2"></i>
+                        Ajouter l'Administrateur
+                      </span>
+                      <span *ngIf="isSubmitting">
+                        <i class="fas fa-spinner fa-spin me-2"></i>
+                        Ajout en cours...
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

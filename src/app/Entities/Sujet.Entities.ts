@@ -4,7 +4,7 @@ export class Sujet {
   constructor(
     public id?: number,
     public description?: string,
-    public status?:boolean,
+    public status?:number,
     public etudiant?:Etudiant
   ) {}
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Rapport } from '../Entities/Rapport';
 import { CrudService } from '../service/crud.service';
@@ -8,59 +8,67 @@ import { CrudService } from '../service/crud.service';
   templateUrl: './liste-rapport.component.html',
   styleUrls: ['./liste-rapport.component.css']
 })
-export class ListeRapportComponent {
+export class ListeRapportComponent implements OnInit {
   listerapport: Rapport[] = [];
+  filteredRapports: Rapport[] = [];
+  searchTerm: string = '';
+  isLoading: boolean = false;
+  errorMessage: string = '';
 
   constructor(private service: CrudService, private router: Router) {}
 
   ngOnInit(): void {
-    this.service.getRapport().subscribe(rapport => {
-      this.listerapport = rapport;
+    this.loadRapports();
+  }
+
+  loadRapports(): void {
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    this.service.getRapport().subscribe({
+      next: (rapports) => {
+        this.listerapport = rapports;
+        this.filteredRapports = rapports;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.errorMessage = 'Erreur lors du chargement des rapports';
+        this.isLoading = false;
+        console.error('Erreur:', error);
+      }
     });
   }
 
-
-  downloadpdf(base64String: string) {
-    const fileName = "rapport.pdf";
-
-    // Nettoyer la chaîne si elle commence par "data:*"
-    const cleanedBase64 = base64String.includes("base64,")
-      ? base64String.split("base64,")[1]
-      : base64String;
-
-    try {
-      const byteCharacters = atob(cleanedBase64);
-      const byteNumbers = new Array(byteCharacters.length);
-
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
-
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], {
-        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      });
-
-      const blobUrl = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = blobUrl;
-      link.download = fileName;
-      link.click();
-
-      URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      console.error("Erreur lors du décodage base64 :", error);
+  onSearchChange(): void {
+    if (!this.searchTerm.trim()) {
+      this.filteredRapports = this.listerapport;
+      return;
     }
+
+    const searchTermLower = this.searchTerm.toLowerCase().trim();
+    this.filteredRapports = this.listerapport.filter(rapport =>
+      (rapport.id?.toString().includes(searchTermLower)) ||
+      (rapport.encadrant?.nom?.toLowerCase().includes(searchTermLower)) ||
+      (rapport.encadrant?.prenom?.toLowerCase().includes(searchTermLower))
+    );
   }
 
-    downloadPdf(base64String:any) {
-        let fileName:any="rapport";
-        const source =`${base64String}`; // représente les données du fichier PDF encodées en base64
-       const link = document.createElement("a");
-       link.href = source;
-       link.download =`${fileName}.docx`
-        link.click();
-      }
+  clearSearch(): void {
+    this.searchTerm = '';
+    this.filteredRapports = this.listerapport;
   }
+
+  trackByRapportId(index: number, rapport: Rapport): number {
+    return rapport.id || index;
+  }
+
+  downloadPdf(base64String: any): void {
+    const fileName = "rapport";
+    const source = `${base64String}`;
+    const link = document.createElement("a");
+    link.href = source;
+    link.download = `${fileName}.pdf`;
+    link.click();
+  }
+}
 

@@ -1,95 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Sidebar Menu -->
+<app-menu></app-menu>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:30 GMT -->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <title>Admiro - Premium Admin Template</title>
-    <!-- Favicon icon-->
-
-  </head>
-  <body>
-    <!-- tap on top starts-->
-    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
-    <!-- tap on tap ends-->
-    <!-- loader-->
-    <div class="loader-wrapper">
-      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
-     <app-header></app-header>
-      <div class="page-body-wrapper">
-        <!-- Page sidebar start-->
-        <app-menu></app-menu>
-        <!-- Page sidebar end-->
-        <div class="page-body">
-          <div class="container-fluid">
-            <div class="page-title">
-              <div class="row">
-                <div class="col-sm-6 col-12">
-                  <h2>Advance Init</h2>
-                </div>
-                <div class="col-sm-6 col-12">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
-                    <li class="breadcrumb-item">Data Tables</li>
-                    <li class="breadcrumb-item active">Advance Init </li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid starts                   -->
-          <div class="container-fluid">
-            <div class="row">
-              <!-- Stock result -->
-
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header pb-0 card-no-border">
-
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive theme-scrollbar">
-                      <table class="display" id="row_create" style="width:100%">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Journal</th>
-                            <th>Etudiant</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let journal of listJournal">
-                            <td>{{journal.id}}	</td>
-                            <td>{{journal.journal}}	</td>
-                            <td>{{journal.etudiant.nom}}	</td>
-
-
-                          </tr>
-                         </tbody>
-
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid Ends                                     -->
+<!-- Main Content Area -->
+<div class="main-content">
+  <!-- Page Header -->
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-sm-6 col-12">
+          <h2 class="page-title-text">
+            <i class="fas fa-book me-3"></i>
+            Gestion des Journaux
+          </h2>
+          <p class="page-subtitle">
+            <i class="fas fa-info-circle me-2"></i>
+            Consultez et gérez les journaux de stage des étudiants
+          </p>
         </div>
-       <app-footer></app-footer>
+        <div class="col-sm-6 col-12 text-end">
+          <div class="journal-stats">
+            <span class="badge bg-light me-2">
+              <i class="fas fa-book me-1"></i>
+              Total: {{filteredJournals?.length || 0}}
+            </span>
+            <span class="badge bg-primary">
+              <i class="fas fa-file-pdf me-1"></i>
+              Journaux disponibles
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- jquery-->
+  </div>
 
-  </body>
+<!-- Main Content -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card modern-card">
+        <!-- Search Bar -->
+        <div class="card-header border-0 pb-3">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <div class="search-container">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="🔍 Rechercher par ID, nom d'étudiant..."
+                    [(ngModel)]="searchTerm"
+                    (input)="onSearchChange()"
+                  >
+                  <button
+                    *ngIf="searchTerm"
+                    class="btn"
+                    type="button"
+                    (click)="clearSearch()"
+                    title="Effacer la recherche"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Feb 2025 09:11:31 GMT -->
-</html>
+        <!-- Table Content -->
+        <div class="card-body">
+          <!-- Loading State -->
+          <div *ngIf="isLoading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Chargement...</span>
+            </div>
+            <p class="mt-3 text-muted">Chargement des journaux...</p>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            {{errorMessage}}
+          </div>
+
+          <!-- Table -->
+          <div *ngIf="!isLoading && !errorMessage" class="table-responsive">
+            <table class="table table-modern">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="d-flex align-items-center justify-content-center">
+                      <i class="fas fa-hashtag me-2"></i>
+                      ID
+                    </div>
+                  </th>
+                  <th>
+                    <div class="d-flex align-items-center justify-content-center">
+                      <i class="fas fa-user-graduate me-2"></i>
+                      Étudiant
+                    </div>
+                  </th>
+                  <th>
+                    <div class="d-flex align-items-center justify-content-center">
+                      <i class="fas fa-file-pdf me-2"></i>
+                      Journal
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let journal of filteredJournals; trackBy: trackByJournalId" class="journal-row">
+                  <td>
+                    <span class="journal-id">#{{journal.id}}</span>
+                  </td>
+                  <td>
+                    <div class="journal-info">
+                      <div class="journal-avatar">
+                        <i class="fas fa-user-circle fa-2x text-primary"></i>
+                      </div>
+                      <div class="journal-details">
+                        <div class="journal-name">{{journal.etudiant?.nom}} {{journal.etudiant?.prenom}}</div>
+                        <small class="text-muted">Étudiant</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <img
+                      src="assets/pdf.jpg"
+                      class="pdf-icon"
+                      (click)="downloadPdf(journal.journal)"
+                      title="Télécharger le journal"
+                      alt="PDF Journal"
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Empty State -->
+            <div *ngIf="filteredJournals?.length === 0" class="empty-state">
+              <i class="fas fa-book fa-4x mb-3"></i>
+              <h5>Aucun journal trouvé</h5>
+              <p class="mb-0">
+                <span *ngIf="searchTerm">Aucun journal ne correspond à votre recherche.</span>
+                <span *ngIf="!searchTerm">Aucun journal n'est disponible pour le moment.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

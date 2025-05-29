@@ -8,7 +8,6 @@ export class Encadrant {
     public prenom ?:string ,
     public email ?:string ,
     public password ?:string ,
-
     public tel ?:string ,
     public qualite?:Qualite,
     public specialite?:Specialite,
